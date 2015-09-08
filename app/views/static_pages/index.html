@@ -7,13 +7,21 @@
 
 
   <table id="review"></table>
-  <%= form_for Movie.new, url: {action: "create"} do |m_form|%>
-    <%= m_form.text_field :name %>
-    <%= m_form.date :release_date %>
+
+  <hr>
+
+  <h4>New Movie Form</h4>
+
+  <%= form_for Movie.new, url: {action: "create", controller: "movies"}, remote: true do |m_form|%>
+    <%= m_form.label :name %>
+    <%= m_form.text_field :name %><br>
+    <%= m_form.label :release_date %>
+    <%= m_form.date_select :release_date %> <br>
+    <%= m_form.submit %>
   <% end %>
 
-  
-  
+
+
 
 </body>
 </html>

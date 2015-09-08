@@ -10,7 +10,13 @@ class MoviesController < ApplicationController
   end
 
   def create
-    @movie = Movie.new
+    @movie = Movie.new(white_listed_params)
+    respond_to do |format|
+      if @movie.save
+        format.js {}
+      end
+    end
+
   end
 
   def test
@@ -20,5 +26,11 @@ class MoviesController < ApplicationController
 
   def show
 
+  end
+
+  private
+
+  def white_listed_params
+    params.require(:movie).permit(:name, :"release_date(1i)", :"release_date(2i)", :"release_date(3i)")
   end
 end
