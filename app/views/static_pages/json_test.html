@@ -1,0 +1,27 @@
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <table id="movie"></table>
+
+  <% @movies.each do |movie|%>
+  <tr>
+    <td><%= movie.id %></li>
+    <td><%= movie.name %></li>
+    <td><%= movie.release_date %></li>
+  </tr>
+  <% end %>
+
+  <table id="review"></table>
+  <% @reviews.each do |review|%>
+  <tr>
+    <td><%= review.movie_id %></li>
+    <td><%= review.title %></li>
+    <td><%= review.review_text %></li>
+    <td><%= review.review_date %></li>
+  </tr>
+  <% end %>
+
+</body>
+</html>

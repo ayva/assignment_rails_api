@@ -8,5 +8,5 @@
 
 5.times do |i|
   Movie.create(:name => "Movie#{i}", :release_date => Time.now() - 6048000*i)
-  Review.create(:reviewer_name => "Some Name", movie_id: i, review_date: Time.now() - 518400*i )
+  Review.create(:reviewer_name => "Some Name", movie_id: i, review_date: Time.now() - 518400*i, title: "Movie #{i} review", review_text: "Nice movie #{i}"  )
 end
