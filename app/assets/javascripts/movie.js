@@ -17,31 +17,34 @@
 
     getMovie: function(){
       $.ajax({
-      method: "GET",
-      url: "movies.json",
+        method: "GET",
+        url: "movies.json",
 
-      dataType: "json",
-      contentType: "application/json",
-      // headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000'},
-      // type: "POST",
-      async: true
-      success: function(){
-        ///How to get movies
-               var str = ""
-              for(var i=0; i<movies; i++){
-                movies[i]
-        str += "<tr>
-          <td><%= movie.id %></li>
-          <td><%= movie.name %></li>
-          <td><%= movie.release_date %></li>
-        </tr>"
+        dataType: "json",
+        contentType: "application/json",
+        // headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000'},
+        // type: "POST",
+        async: true,
+        success: function(json){
+        
+              var movies = json;
+              var str = "";
+              for(var i=0; i<movies.length; i++){
+       
+                str += '<tr> \
+                          <td>'+movies[i].id+' </td> \
+                          <td>'+movies[i].name+' </td> \
+                          <td>'+movies[i].release_date+' </td> \
+                        </tr>' 
+                
               }
-              $('#movie').append("  <tr>
-          <td><%= movie.id %></li>
-          <td><%= movie.name %></li>
-          <td><%= movie.release_date %></li>
-        </tr>")
-            }
+              $('#movie').append(str);
+        },
+        failure: function(){
+          console.log("fails to load json")
+        }
       })
     }
   }
+
+  List.getMovie();
