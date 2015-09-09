@@ -1,29 +1,24 @@
 
   var List = {
 
-  //   addMovie: function(){
+    appendMovie: function(movie){
 
-  //   $.ajax({
-  //     method: "POST",
-  //     url: "movies/index.json",
-
-  //     dataType: "json",
-  //     contentType: "application/json",
-  //     // headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000'},
-  //     // type: "POST",
-  //     async: true
-  //     })
-  // },
-
+                str = '<tr> \
+                          <td>'+movie[0].id+' </td> \
+                          <td>'+movie[0].name+' </td> \
+                          <td>'+movie[0].release_date+' </td> \
+                        </tr>' ;
+                
+              
+              $('#movie').append(str);
+        
+    },
     getMovie: function(){
       $.ajax({
         method: "GET",
         url: "movies.json",
-
         dataType: "json",
         contentType: "application/json",
-        // headers: { 'Access-Control-Allow-Origin': 'http://localhost:3000'},
-        // type: "POST",
         async: true,
         success: function(json){
         

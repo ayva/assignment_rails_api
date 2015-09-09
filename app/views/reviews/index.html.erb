@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Reviews</title>
+</head>
+<body>
+  <h1>Place you review</h1>
+  <%=form_for Review.new, url: {action: "create", controller: "reviews"}, remote: true do |r| %>
+    <h3 id="reviewer">Review from Olga</h3>
+    <%=r.label :movie_id %>
+    <%= r.collection_select(:movie_id, @movies, :id, :name) %>
+    
+    <%=r.label :title %>
+    <%=r.text_field :title %>
+    <br>
+    <%=r.label :review_text %>
+    <%=r.text_field :review_text %>
+    <br>
+    <%=r.submit %>
+  <% end %>
+  <br>
+  <!-- If id="review" review.js will fill it with data -->
+  <table id="reviews-list">
+    <th>Reviewer</th>
+    <th>Title</th>
+    <th>Review text</th>
+    <th>Review date</th>
+    <th>Movie ID</th>
+    
+
+    <% @reviews.reverse.each do |review| %>
+      <%=render :partial => 'review', :locals => { :review => review }%>
+    <% end %> 
+  </table>
+</body>
+</html>

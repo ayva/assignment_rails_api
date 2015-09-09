@@ -1,0 +1,5 @@
+
+
+//List.appendMovie(<%=escape_javascript(@movie.to_json)%>)
+
+$('#movie').append('<tr> <td><%=@movie.id%></td> <td><%=@movie.name%> </td> <td><%=@movie.release_date%></td></tr>');
